@@ -283,13 +283,13 @@ const chatbotHTML = `
 </button>
 <div class="chatbot">
     <header>
-        <h2>RB Assistant 🤖</h2>
+        <h2>SLV Support 🤖</h2>
         <span class="close-btn material-symbols-outlined"><i class="fa-solid fa-xmark"></i></span>
     </header>
     <ul class="chatbox">
         <li class="chat incoming">
             <span class="material-symbols-outlined"><i class="fa-solid fa-robot"></i></span>
-            <p>Namaste! 🙏<br>Main RB Electronics se hu. Main aapki kaise help kar sakta hu?</p>
+            <p>Namaste! 🙏<br>Main SLV Service Center se hu. Main aapki kaise help kar sakta hu?</p>
         </li>
     </ul>
     <div class="chat-input">
@@ -304,7 +304,7 @@ const getResponse = (message) => {
     const msg = message.toLowerCase();
 
     if (msg.includes('hi') || msg.includes('hello') || msg.includes('namaste') || msg.includes('hey')) {
-        return "Namaste! Welcome to RB Electronics. Kya aap device repair karwana chahte hain ya naya item khareedna chahte hain?";
+        return "Namaste! Welcome to SLV Service Center. Kya aap TV repair karwana chahte hain ya service inquiry hai?";
     }
     if (msg.includes('price') || msg.includes('cost') || msg.includes('rate') || msg.includes('kitne') || msg.includes('paisa')) {
         return "Repair ka cost, device check karne ke baad hi bataya ja sakta hai. Visit us for a FREE diagnosis! 🛠️";
@@ -313,10 +313,10 @@ const getResponse = (message) => {
         return "Hum Roz (Mon-Sun) Subah 9:00 AM se Raat 9:00 PM tak open rehte hain.";
     }
     if (msg.includes('location') || msg.includes('address') || msg.includes('kahan') || msg.includes('jagah') || msg.includes('shop')) {
-        return "Humara shop Nagadevanahalli, Bengaluru main hai. Google Maps location ke liye yahan click karein: [Map Link]";
+        return "Humara service center Andrahalli, Bengaluru main hai. Google Maps location ke liye yahan click karein: [Map Link]";
     }
     if (msg.includes('phone') || msg.includes('number') || msg.includes('contact') || msg.includes('call') || msg.includes('baat')) {
-        return "Aap humein direct call kar sakte hain: +91 80505 66099 📞";
+        return "Aap humein direct call kar sakte hain: +91 90085 28434 📞";
     }
     if (msg.includes('laptop') || msg.includes('mobile') || msg.includes('tv') || msg.includes('screen')) {
         return "Haan, hum Mobile, Laptop, TV aur Home Appliances sab kuch repair karte hain. Genuine parts ke saath! ✅";
@@ -325,7 +325,7 @@ const getResponse = (message) => {
         return "Bilkul! Humare repairs aur parts par 6 months tak ki warranty milti hai. 🛡️";
     }
 
-    return "Maaf karein, main robot hoon aur samajh nahi paaya. 🤖\n\nKripya call karein: +91 80505 66099 ya seedha message mein 'Call' likhein.";
+    return "Maaf karein, main robot hoon aur samajh nahi paaya. 🤖\n\nKripya call karein: +91 90085 28434 ya seedha message mein 'Call' likhein.";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
