@@ -106,11 +106,36 @@ p.small {
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
+        /* Still big but manageable */
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+        /* Mobile Portrait */
+        margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 20px;
     }
 }
 
@@ -168,6 +193,9 @@ p.small {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    gap: 0.5rem;
 }
 
 .top-bar-info {
@@ -181,16 +209,45 @@ p.small {
     gap: 0.5rem;
 }
 
+@media (max-width: 768px) {
+    .top-bar-content {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        padding: 0.5rem 0;
+    }
+
+    .top-bar-info {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar {
+        display: none;
+        /* Often cleaner to hide on very small mobile, or keep if vital */
+    }
+
+    /* Make top bar visible on tablet but stacked, hidden on small mobile if needed
+       For now, let's keep it but simplified or hide it to save space.
+       Let's actually just hide it on < 600px to save screen real estate.
+    */
+}
+
+@media (max-width: 600px) {
+    .top-bar {
+        display: none;
+    }
+}
+
 /* Navigation */
 .navbar {
     background-color: var(--white);
     padding: 0.4rem 0;
-    /* Significantly reduced vertical padding */
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    /* Added slight shadow for better separation */
 }
 
 .nav-links a {
@@ -209,7 +266,6 @@ p.small {
     justify-content: space-between;
     align-items: center;
     padding: 0.1rem 20px;
-    /* Reduced to minimum for vertical compactness */
     max-width: var(--max-width);
     margin: 0 auto;
 }
@@ -218,18 +274,16 @@ p.small {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    /* Ultra tight gap to bring logo right next to text */
     text-decoration: none;
+    z-index: 1001;
+    /* Ensure logo is clickable above menu if needed */
 }
 
 .logo img {
     width: 90px;
     height: 90px;
     border-radius: 50% !important;
-    /* Force circular crop */
     object-fit: cover;
-    /* Crop to fill circle and hide white edges */
-    /* Crops to show only circular part, hides white background */
     background: transparent;
     display: block;
     transition: var(--transition);
@@ -241,7 +295,6 @@ p.small {
 
 .logo-text {
     font-size: 2.2rem;
-    /* Massive text to match the 90px icon */
     font-weight: 900;
     color: var(--text-dark);
     font-family: 'Inter', sans-serif;
@@ -297,12 +350,51 @@ p.small {
     border-radius: 50px;
     font-size: 0.85rem !important;
     box-shadow: 0 4px 15px rgba(26, 115, 232, 0.2);
+    white-space: nowrap;
+    /* Prevent text wrapping */
 }
 
 .nav-cta:hover {
     background: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
+}
+
+/* Mobile Navbar Styles */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem 15px;
+        /* Reduce side padding */
+    }
+
+    .logo img {
+        width: 60px;
+        /* Smaller Logo */
+        height: 60px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        /* Smaller Text */
+    }
+
+    .nav-cta {
+        padding: 8px 16px !important;
+        font-size: 0.75rem !important;
+        margin-left: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        display: none;
+        /* Hide text on very small screens if overlapping */
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .mobile-menu-btn {
@@ -730,6 +822,42 @@ footer {
 }
 
 /* Stats Strip */
+.hero-stats-wrapper {
+    margin-top: -3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-stats-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.hero-stat-item {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #f3f3f4;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6e6d7a;
+    box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 900px) {
+    .hero-stats-wrapper {
+        margin-top: 2rem;
+        /* Reset negative margin on mobile so it doesn't overlap weirdly */
+    }
+
+    .hero-stats-container {
+        justify-content: center;
+        /* Center stats on mobile to match hero text */
+    }
+}
+
 .stats-strip {
     padding: 4rem 20px;
 }
@@ -867,13 +995,25 @@ footer {
 .cta-block-blue {
     background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
     border-radius: 32px;
-    /* Softer corners */
     padding: 6rem 4rem;
-    /* More GAPING */
     text-align: center;
     color: white;
     margin: 4rem 0;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .cta-block-blue {
+        padding: 4rem 2rem;
+        border-radius: 24px;
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-block-blue {
+        padding: 3rem 1.5rem;
+    }
 }
 
 .cta-block-blue h2 {
@@ -1007,9 +1147,16 @@ footer {
 /* Premium Process Steps (6 Steps) */
 .process-grid-premium {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .process-grid-premium {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .process-card-premium {
@@ -1111,13 +1258,46 @@ footer {
         width: 100%;
         background-color: var(--white);
         flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow-md);
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         text-align: center;
+        border-top: 1px solid #f3f3f4;
     }
 
     .nav-links.active {
         display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Remove underline animation on mobile as it can look odd */
+    .nav-links a {
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary-color);
+        background-color: #f9fafb;
+        /* Subtle background highlight instead */
+        border-radius: 8px;
     }
 
     .mobile-menu-btn {
